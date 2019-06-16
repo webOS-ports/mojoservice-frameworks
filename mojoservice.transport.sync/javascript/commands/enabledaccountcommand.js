@@ -25,7 +25,7 @@ exports.EnabledAccountCommand = Class.create(Transport.Command,
 				console.error("=== Default answer is 'true' - internet is required ===");
 				requiresInternet = true;
 			}
-			requirements = (requiresInternet) ? { internetConfidence: "fair" } : undefined;
+			requirements = (requiresInternet) ? { internet: true } : undefined;
 			var command = "sync"; //TODO: Shouldn't the command name be retrieved from the config?
 			args = { accountId: this.client.clientId };
 			

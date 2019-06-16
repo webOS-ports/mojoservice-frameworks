@@ -196,7 +196,7 @@ MockActivity.prototype = {
 	start: function () {
 		return new Future({
 			interval: this.interval,
-			internetConfidence: this.requirements.internetConfidence
+			internet: true
 		});
 	}
 };
