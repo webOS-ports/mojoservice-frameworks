@@ -195,8 +195,7 @@ MockActivity.prototype = {
 	setCallback: function () { return this; },
 	start: function () {
 		return new Future({
-			interval: this.interval,
-			internet: true
+			interval: this.interval
 		});
 	}
 };
@@ -316,7 +315,7 @@ SyncErrorHandlingTests.prototype = {
 		var future = this.command.getPeriodicSyncActivity();
 		future.then(this, function (join) {
 			console.log("result: " + JSON.stringify(join.result));
-			if (!join.exception && join.result && join.result.interval === "24h" && join.result.internetConfidence === "fair") {
+			if (!join.exception && join.result && join.result.interval === "24h") {
 				reportResults(Test.passed);
 			} else {
 				reportResults(Test.failed);
@@ -342,7 +341,7 @@ SyncErrorHandlingTests.prototype = {
 		var future = this.command.getPeriodicSyncActivity();
 		future.then(this, function (join) {
 			console.log("result: " + JSON.stringify(join.result));
-			if (!join.exception && join.result && join.result.interval === "24h" && join.result.internetConfidence === "fair") {
+			if (!join.exception && join.result && join.result.interval === "24h") {
 				reportResults(Test.passed);
 			} else {
 				reportResults(Test.failed);
@@ -375,7 +374,7 @@ SyncErrorHandlingTests.prototype = {
 			}
 		});
 		future.then(this, function (join) {
-			if (!join.exception && join.result && join.result.internetConfidence === "fair") {
+			if (!join.exception && join.result) {
 				reportResults(Test.passed);
 			} else {
 				reportResults(Test.failed);
