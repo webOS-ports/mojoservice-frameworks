@@ -295,7 +295,7 @@ var SyncCommand = exports.SyncCommand = Class.create(Transport.Command,
 					console.error("=== Default answer is 'true' - internet is required ===");
 					requiresInternet = true;
 				}
-				requirements = (requiresInternet) ? { internet: true } : undefined;
+				requirements = undefined;
 				var args = { accountId: this.client.clientId };
 				var activity = new Foundations.Control.Activity(name, "Periodic Sync", true)
 					.setScheduleInterval(interval)
@@ -394,7 +394,7 @@ var SyncCommand = exports.SyncCommand = Class.create(Transport.Command,
 							console.error("=== Default answer is 'true' - internet is required ===");
 							requiresInternet = true;
 						}
-						requirements = (requiresInternet) ? { internet: true } : undefined;
+						requirements = undefined;
 						var queryParams = {
 							"query":{
 								"from":this._kind,
