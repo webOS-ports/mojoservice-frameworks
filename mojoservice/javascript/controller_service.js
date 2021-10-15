@@ -30,7 +30,7 @@ var ServiceController = exports.ServiceController = Class.create(
 		// they're limited to sending on the public bus
 		this._privateDispatcher = new MethodDispatcher(this.name, false);
 		console.log("Private Bus Access: "+this.config.privatebus);
-		if (this.config.privatebus || this.name.match(/^com\.palm\./)) {
+		if (this.config.privatebus || this.name.match(/^com\.palm\./) || this.name.match(/^com\.webos\./) || this.name.match(/^org\.webosports\./)) {
 			console.log("Sending on private bus");
 			this._privateDispatcher.registerWithPalmCall();
 		} else {
