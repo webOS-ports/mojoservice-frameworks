@@ -113,7 +113,7 @@ exports.AppController = Class.create({
 			if (typeof quit === "function") {
     			quit();			    
 			} else {
-			    root.process.exit();
+			    global.process.exit();
 			}
 		}
 	},
