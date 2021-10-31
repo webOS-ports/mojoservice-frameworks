@@ -5,7 +5,7 @@ exports.AppController = Class.create({
 			commandLineArguments = [];
 		}
 		if (!assistants) {
-		    assistants = root;
+		    assistants = global;
 		}
 		this.assistants = assistants; 
 		this.parseArguments(commandLineArguments);
