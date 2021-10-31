@@ -320,7 +320,7 @@ var ServiceController = exports.ServiceController = Class.create(
 	 */
 	createCommandAssistant: function(command)
 	{
-		var assistant = root[command.assistant];
+		var assistant = global[command.assistant];
 		return assistant ? new assistant() : undefined;
 	},
 	
