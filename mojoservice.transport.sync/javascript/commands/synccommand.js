@@ -449,7 +449,7 @@ var SyncCommand = exports.SyncCommand = Class.create(Transport.Command,
 				console.error("=== Default answer is 'true' - internet is required ===");
 				requiresInternet = true;
 			}
-			requirements = (requiresInternet) ? { internet: true } : undefined;
+			requirements = undefined;
 			var args = { accountId: this.client.clientId };
 			var retryActivity = new Foundations.Control.Activity(name, "SyncRetry", true)
 				.setUserInitiated(false)
