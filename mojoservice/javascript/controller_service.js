@@ -35,8 +35,8 @@ var ServiceController = exports.ServiceController = Class.create(
 			this._privateDispatcher.registerWithPalmCall();
 		} else {
 			console.log("sending on public bus");
-			this._publicDispatcher = new MethodDispatcher(this.name, true);
-			this._publicDispatcher.registerWithPalmCall();
+			// there is no private/public bus anymore with ACG --> use the same bus for both
+			this._publicDispatcher = this._privateDispatcher;
 		}
 		
 		// Get command assistant factory
@@ -153,9 +153,9 @@ var ServiceController = exports.ServiceController = Class.create(
 			{
 				if (!self._publicDispatcher)
 				{
-					self._publicDispatcher = new MethodDispatcher(self.name, true);
+					// there is no private/public bus anymore with ACG --> use the same bus for both
+					self._publicDispatcher = self._privateDispatcher;
 				}
-				self._publicDispatcher.registerMethod(command.category || "", command.name, self._dispatchCommand.bind(self, true, command));
 			}
 		});
 		
