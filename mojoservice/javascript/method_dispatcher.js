@@ -8,7 +8,7 @@ if (typeof require !== "undefined") {
     {
     	initialize: function(serviceName, publicBus) {
     	    var self = this;
-    	    this._handle = new palmbus.Handle(serviceName, publicBus);
+    	    this._handle = new palmbus.Handle(serviceName);
     	    this.functions = {};
     	    this._handle.addListener('request', function(message) {
     	       self._dispatchMessage(message);
@@ -65,7 +65,7 @@ if (typeof require !== "undefined") {
     var MethodDispatcher = Class.create(
     {
     	initialize: function(serviceName, publicBus) {
-    	    this._handle = new webOS.Handle(serviceName, publicBus);
+    	    this._handle = new webOS.Handle(serviceName);
     	},
 
     	registerMethod: function(category, method, f) {
