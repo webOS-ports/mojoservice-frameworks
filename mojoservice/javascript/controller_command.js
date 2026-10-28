@@ -43,7 +43,12 @@ var CommandController = exports.CommandController = Class.create(
 			if (passed_activity && passed_activity.callback && passed_activity.callback.serial) {
 				this.activity.serial = passed_activity.callback.serial;
 			}
-			var fromActivityManager =  message && message.senderServiceName && (message.senderServiceName()==='com.palm.activitymanager');
+			// The OSE activitymanager calls back through LSCallProxy on behalf of the activity's
+			// creator, so the sender reads "<creator>_com.webos.service.activitymanager_proxy".
+			var sender = message && message.senderServiceName && message.senderServiceName();
+			var fromActivityManager = !!sender && (sender === 'com.palm.activitymanager' ||
+				sender === 'com.webos.service.activitymanager' ||
+				stringEndsWith(sender, '_com.webos.service.activitymanager_proxy'));
 			if (fromActivityManager) {
 				console.log("activityManager launched us - adopting activity with serial "+this.activity.serial);
 				this._pendingAdopt = this.activity.adopt(passed_activity.activityId).then(this, function(future) {
