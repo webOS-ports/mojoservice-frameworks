@@ -228,7 +228,11 @@ var CommandController = exports.CommandController = Class.create(
 		}
 		this._unsubscribe();
 		if (this.activity) {
-			if (this.assistant.complete && typeof this.assistant.complete === 'function') {
+			if (this.adoptFailed) {
+				// The command never ran and the activity no longer exists: there is
+				// nothing to complete, and the assistant was never given its client.
+				console.log("not completing activity that could not be adopted");
+			} else if (this.assistant.complete && typeof this.assistant.complete === 'function') {
 				try {
 					this.assistant.complete(this.activity);
 				}
